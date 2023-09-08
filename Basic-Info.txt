@@ -1,0 +1,31 @@
+"""
+----DATA SCIENCE PIPELINE----
+
+1. DATA INGESTION
+2. DATA VALIDATION
+3. MODEL TRAINING
+4. MODEL ANALYSIS AND VALIDATION
+5. MODEL DEPLOYMENT
+
+----PROBLEM STATEMENT----
+
+the purpose of this data is to look into the different features 
+to observe their relationship, ML model based on several features 
+of individuals such as age, physical/family condition and location 
+against their existing medical expense to be used for predicting
+future medical expenses of individuals that help medical insurance 
+to make decision on charging the premium.
+
+
+----TECH STACK----
+
+1. Python Modular Coding
+2. Machine Learning
+3. MongoDB Database
+4. AWS Cloud
+5. Apache
+6. Docker
+6. Grafana
+7. DVC
+8. MLflow
+"""
