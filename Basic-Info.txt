@@ -1,4 +1,10 @@
 """
+Day-1 Task: Discussing about the project folder structure and Database
+
+Task-1: created data_dump to dump the data into Database
+Task-2: created project folder structure
+
+
 ----DATA SCIENCE PIPELINE----
 
 1. DATA INGESTION
@@ -28,4 +34,17 @@ to make decision on charging the premium.
 6. Grafana
 7. DVC
 8. MLflow
+
+Day-2 Task: Discussing about project building
+
+Task-1: created Setup.py file
+Task-2: created requirements.txt file
+
+
+----Project Building----
+
+1. Setup file understanding & implementation
+2. Logger file understanding & implementation
+3. Exception file understanding & implementation
+
 """

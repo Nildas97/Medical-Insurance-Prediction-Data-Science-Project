@@ -1,0 +1,8 @@
+pandas
+numpy
+pymongo
+-e .
+
+
+# -e defines mode i.e. editable mode
+# . defines the current directory
