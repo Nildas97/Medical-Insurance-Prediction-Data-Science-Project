@@ -1,4 +1,4 @@
-"""
+ """
 Day-1 Task: Discussing about the project folder structure and Database
 
 Task-1: created data_dump to dump the data into Database
@@ -39,7 +39,8 @@ Day-2 Task: Discussing about project building
 
 Task-1: created Setup.py file
 Task-2: created requirements.txt file
-
+Task-3: created logger file
+Task-4: created Exception file
 
 ----Project Building----
 
