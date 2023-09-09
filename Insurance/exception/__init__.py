@@ -4,6 +4,15 @@ import os, sys
 
 # creating InsuranceException class
 class InsuranceException(Exception):
+    """
+    Description: Returns exceptions details
+    Args:
+        Exception (str): exception handling
+
+    Returns:
+        str: returns exception
+    """
+
     # creating init function for error_message and error_details
     def __init__(self, error_message: Exception, error_detail: sys):
         # creating super class for calling error_message
@@ -15,7 +24,17 @@ class InsuranceException(Exception):
     @staticmethod
     # defining error_message_detail function
     def error_message_detail(error: Exception, error_details: sys) -> str:
-        # empty funtion for error_details executable info
+        """
+        Description:
+            Returns error message details
+        Args:
+            error (Exception): error types and
+            error_details (sys): error line number and file name
+
+        Returns:
+            str: returns error message with error details
+        """
+        # empty function for error_details executable info
         _, _, exc_tb = error_details.exc_info()
 
         # getting error_message line number

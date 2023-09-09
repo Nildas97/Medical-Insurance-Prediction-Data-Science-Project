@@ -2,23 +2,33 @@
 from Insurance.logger import logging
 from Insurance.exception import InsuranceException
 import os, sys
-
+from Insurance.utils import get_collection_as_dataframe
 
 # defining the test_logger_and_exception function
-def test_logger_and_exception():
-    try:
-        logging.debug("Starting point of the test_logger_and_exception")
-        result = 3 / 0
-        print(result)
-        logging.debug("Ending point of the test_logger_and_exception")
-    except Exception as e:
-        logging.debug(str(e))
-        raise InsuranceException(e, sys)
+# def test_logger_and_exception():
+#     """
+#     Description:
+#         Returns test files of logging and exception
+
+#     Raises:
+#         InsuranceException: handling exception
+#     """
+#     try:
+#         logging.debug("Starting point of the test_logger_and_exception")
+#         result = 3 / 0
+#         print(result)
+#         logging.debug("Ending point of the test_logger_and_exception")
+#     except Exception as e:
+#         logging.debug(str(e))
+#         raise InsuranceException(e, sys)
 
 
 # calling name function
 if __name__ == "__main__":
     try:
-        test_logger_and_exception()
+        # test_logger_and_exception()
+        get_collection_as_dataframe(
+            database_name="INSURANCE", collection_name="INSURANCE_PROJECT"
+        )
     except Exception as e:
         print(e)
