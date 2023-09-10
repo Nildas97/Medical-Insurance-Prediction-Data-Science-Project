@@ -47,8 +47,8 @@ class DataIngestionConfig:
                 training_pipeline_config.artifact_dir, "data_ingestion"
             )
 
-            # creating feature_path to store data
-            self.feature_store_path = os.path.join(
+            # creating feature_store_file_path to store data
+            self.feature_store_file_path = os.path.join(
                 self.data_ingestion_dir, "feature_store", FILE_NAME
             )
 
@@ -61,6 +61,9 @@ class DataIngestionConfig:
             self.test_file_path = os.path.join(
                 self.data_ingestion_dir, "dataset", TEST_FILE_NAME
             )
+
+            # creating custom test size
+            self.test_size = 0.2
         except Exception as e:
             raise InsuranceException(e, sys)
 

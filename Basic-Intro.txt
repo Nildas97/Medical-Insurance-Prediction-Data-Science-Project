@@ -85,4 +85,7 @@ Task-4: created artifact_entity file
 
 ---------------------------------------------------------------------------
 
+Day Task: Building data ingestion and data validation section
+
+Task-1: 
 """
