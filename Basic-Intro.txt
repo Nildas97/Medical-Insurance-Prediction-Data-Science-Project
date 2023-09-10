@@ -1,0 +1,88 @@
+ """
+Day-1 Task: Discussing about the project folder structure and Database
+
+Task-1: created data_dump to dump the data into Database
+Task-2: created project folder structure
+
+
+----DATA SCIENCE PIPELINE----
+
+1. DATA INGESTION
+2. DATA VALIDATION
+3. MODEL TRAINING
+4. MODEL ANALYSIS AND VALIDATION
+5. MODEL DEPLOYMENT
+
+----PROBLEM STATEMENT----
+
+the purpose of this data is to look into the different features 
+to observe their relationship, ML model based on several features 
+of individuals such as age, physical/family condition and location 
+against their existing medical expense to be used for predicting
+future medical expenses of individuals that help medical insurance 
+to make decision on charging the premium.
+
+
+----TECH STACK----
+
+1. Python Modular Coding
+2. Machine Learning
+3. MongoDB Database
+4. AWS Cloud
+5. Apache
+6. Docker
+6. Grafana
+7. DVC
+8. MLflow
+
+---------------------------------------------------------------------------
+
+Day-2 Task: Discussing about project building
+
+Task-1: created Setup.py file
+Task-2: created requirements.txt file
+Task-3: created logger file
+Task-4: created Exception file
+
+----Project Building----
+
+1. Setup file understanding & implementation
+2. Logger file understanding & implementation
+3. Exception file understanding & implementation
+
+---------------------------------------------------------------------------
+
+Day-3 Task: Building data science pipeline
+
+Task-1: created utils file and main config file
+Task-2: updated requirements file
+Task-3: created config_entity file 
+Task-4: created artifact_entity file
+
+----DATA SCIENCE PIPELINE (IN_DEPTH)----
+
+1. DATA INGESTION
+    a. getting the data from client or taking in-house data
+    b. reading and dividing the data into three parts: training, testing and validation data.
+        i. training data is used to train the model.
+        ii. testing data is used to test the model.
+        iii. validation data is used to validate the model.
+2. DATA VALIDATION
+    a. first check the data type (whether numerical or categorical)
+    b. second check the missing data or unwanted data.
+    c. DATA TRANSFORMATION
+        i. converting the categorical data into numerical data
+        ii. handling the outliers from the data.
+3. MODEL TRAINING
+    a. data is ready to start applying Machine Learning algorithms on the model.
+    b. usage of randomized search cv or grid search cv is applied in bigger models.
+4. MODEL ANALYSIS AND VALIDATION
+    a. analyzing the results from the model training.
+    b. selecting the best model/ algorithms based on accuracy, performance etc.
+5. MODEL DEPLOYMENT 
+    a. selected model get deployed into the cloud/ server.
+    b. building a data science pipeline, automating the entire data science pipeline for future use.
+
+---------------------------------------------------------------------------
+
+"""

@@ -14,11 +14,11 @@ class InsuranceException(Exception):
     """
 
     # creating init function for error_message and error_details
-    def __init__(self, error_message: Exception, error_detail: sys):
+    def __init__(self, error_message: Exception, error_details: sys):
         # creating super class for calling error_message
         super().__init__(error_message)
         self.error_message = InsuranceException.error_message_detail(
-            error_message, error_details=error_detail
+            error_message, error_details=error_details
         )
 
     @staticmethod
