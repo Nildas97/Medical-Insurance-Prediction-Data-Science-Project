@@ -1,5 +1,6 @@
 # importing libraries
 import pandas as pd
+import pandas as pd
 import numpy as np
 import os, sys
 from Insurance.entity.config_entity import DataIngestionConfig
@@ -17,7 +18,7 @@ class DataIngestion:
     # defining init function to call data_ingestion_config from config_entity file
     def __init__(self, data_ingestion_config: config_entity.DataIngestionConfig):
         try:
-            # logging.info(f"{'>>'*20} Model Trainer {'<<'*20}")
+            logging.info(f"{'>>'*20} Data Validation {'<<'*20}")
             self.data_ingestion_config = data_ingestion_config
         except Exception as e:
             raise InsuranceException(e, sys)
@@ -69,7 +70,7 @@ class DataIngestion:
                 index=False,
                 header=True,
             )
-
+            logging.info("Saving test dataset to feature store folder")
             test_df.to_csv(
                 path_or_buf=self.data_ingestion_config.test_file_path,
                 index=False,
@@ -82,5 +83,8 @@ class DataIngestion:
                 train_file_path=self.data_ingestion_config.train_file_path,
                 test_file_path=self.data_ingestion_config.test_file_path,
             )
+            logging.info(f"Data ingestion artifact: {data_ingestion_artifact}")
+
+            return data_ingestion_artifact
         except Exception as e:
             raise InsuranceException(e, sys)

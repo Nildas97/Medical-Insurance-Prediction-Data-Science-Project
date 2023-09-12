@@ -85,7 +85,32 @@ Task-4: created artifact_entity file
 
 ---------------------------------------------------------------------------
 
-Day Task: Building data ingestion and data validation section
+Day-4 Task: Building data ingestion and data validation section
 
-Task-1: 
+Task-1: created data ingestion file
+Task-2: created data validation file
+
+
+----DATA INGESTION----
+a. export data as dataframe
+b. read the data from database
+c. dropped unwanted columns from the dataframe
+d. splitting the dataframe into train and test data
+e. created feature store folder and dataset folder 
+f. store the train and test data into dataset folder 
+g. store the dataset into feature store folder
+
+----DATA VALIDATION----
+a. read the base dataframe
+b. replace and dropped null values
+c. selecting null value column which contains above 0.2
+d. dropped the columns
+e. read train and test dataframe
+f. replace and dropped null values from train and test dataframe
+g. selecting null value column which contains above 0.2
+h. dropped the columns
+i. converting categorical data from base, train and test data into numerical
+j. required columns present in train and test dataframe
+k. checking data drift in train and test dataframe
+l. generating report
 """
