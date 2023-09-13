@@ -6,6 +6,7 @@ from Insurance.exception import InsuranceException
 from Insurance.logger import logging
 from Insurance.config import mongo_client
 import yaml
+import dill
 
 
 # defining get_collection_as_dataframe function
@@ -49,10 +50,14 @@ def get_collection_as_dataframe(
         raise InsuranceException(e, sys)
 
 
+# defining write_yaml_file function
 def write_yaml_file(file_path, data: dict):
     try:
+        # defining the directory
         file_dir = os.path.dirname(file_path)
+        # creating the directory
         os.makedirs(file_dir, exist_ok=True)
+        # open and dump it in file write
         with open(file_path, "w") as file_write:
             yaml.dump(data, file_write)
 
@@ -69,3 +74,51 @@ def convert_column_float(df: pd.DataFrame, exclude_columns: list) -> pd.DataFram
         return df
     except Exception as e:
         raise InsuranceException(e, sys)
+
+
+def save_object(file_path: str, obj: object) -> None:
+    try:
+        # creating the directory if exists ignore
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        # open and dump it in file object
+        with open(file_path, "wb") as file_obj:
+            return dill.dump(obj, file_obj)
+    except Exception as e:
+        raise InsuranceException(e, sys)
+
+
+def load_object(file_path: str) -> object:
+    try:
+        # checking if the file not available
+        if not os.path.exists(file_path):
+            raise Exception(f"the file: {file_path} is not available")
+        # if the file is available then load the file
+        with open(file_path, "rb") as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        raise InsuranceException(e, sys)
+
+
+def save_numpy_array_data(file_path: str, array: np.array):
+    try:
+        # defining the directory
+        dir_path = os.path.dirname(file_path)
+        # creating the directory
+        os.makedirs(dir_path, exist_ok=True)
+        # open and save it in numpy array
+        with open(file_path, "wb") as file_obj:
+            np.save(file_obj, array)
+    except Exception as e:
+        raise InsuranceException(e, sys)
+
+
+# # model trainer for loading the data
+# def load_numpy_array_data(file_path: str) -> np.array:
+#     try:
+#         # opening the file as object in rb mode and return file_object
+#         # now we wil go to the model_trainer file
+#         with open(file_path, "rb") as file_obj:
+#             return np.load(file_obj)
+
+#     except Exception as e:
+#         raise InsuranceException(e, sys)

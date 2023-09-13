@@ -113,4 +113,26 @@ i. converting categorical data from base, train and test data into numerical
 j. required columns present in train and test dataframe
 k. checking data drift in train and test dataframe
 l. generating report
+
+Day-5 Task: Building data transformation section
+
+Task-1: created data transformation file
+
+----DATA TRANSFORMATION----
+a. reading training and testing data 
+b. dropping target column from train and test data from config folder
+c. defining input feature
+d. defining target feature
+e. data transformation using label encoder
+f. transforming target feature data
+g. converting categorical data into numerical data
+h. calling original data for fitting the pipeline
+i. imputing missing values using simple imputer
+j. detecting outlier using robust scaler
+k. defining pipeline using simple imputer and robust scaler
+l. converting string data into numpy array
+m. saving the transform_train_path
+n. saving the transform_test_path
+o. saving the transform_object_path
+p. saving the target_encoder_path
 """
