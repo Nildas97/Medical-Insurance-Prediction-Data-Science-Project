@@ -114,6 +114,8 @@ j. required columns present in train and test dataframe
 k. checking data drift in train and test dataframe
 l. generating report
 
+---------------------------------------------------------------------------
+
 Day-5 Task: Building data transformation section
 
 Task-1: created data transformation file
@@ -135,4 +137,34 @@ m. saving the transform_train_path
 n. saving the transform_test_path
 o. saving the transform_object_path
 p. saving the target_encoder_path
+
+---------------------------------------------------------------------------
+
+Day-6 Task: Building model trainer file
+
+Task-1: created model trainer file
+
+---- MODEL TRAINER----
+a. Loading transform train data and transform test data
+b. Splitting input and target feature from both train and test data
+c. Training the model using linear regression
+d. Calculating f1 train score
+e. Calculating f1 test score
+f. Checking model is underfitting or not
+g. Calculating f1 train score
+h. Checking model is overfitting or not
+i. Calculating r2 test score
+j. Saving model object
+k. Saving r2 train score
+l. Saving r2 test score
+
+---------------------------------------------------------------------------
+
+Day-7 Task: Building modelresolver in predictor file
+
+Task-1: created predictor file
+Task-2: created model evaluation file
+
+
+----
 """

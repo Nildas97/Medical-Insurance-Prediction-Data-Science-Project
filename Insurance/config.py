@@ -7,12 +7,11 @@ import os, sys
 from dataclasses import dataclass
 
 
-# creating ENvironmentVariable class
+# creating EnvironmentVariable class
 @dataclass
 class EnvironmentVariable:
     """
-    Description:
-        getting environment variable
+    Description: getting environment variable from MongoDB
     """
 
     # fetching the data

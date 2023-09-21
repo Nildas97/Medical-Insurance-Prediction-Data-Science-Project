@@ -50,17 +50,17 @@ class DataIngestionConfig:
                 training_pipeline_config.artifact_dir, "data_ingestion"
             )
 
-            # creating feature store folder to store base data
+            # creating feature store folder inside data_ingestion folder to store base data
             self.feature_store_file_path = os.path.join(
                 self.data_ingestion_dir, "feature_store", FILE_NAME
             )
 
-            # creating dataset folder to store training data
+            # creating dataset folder inside data_ingestion folder to store training data
             self.train_file_path = os.path.join(
                 self.data_ingestion_dir, "dataset", TRAIN_FILE_NAME
             )
 
-            # creating dataset folder to store testing data
+            # creating dataset folder inside data_ingestion folder to store testing data
             self.test_file_path = os.path.join(
                 self.data_ingestion_dir, "dataset", TEST_FILE_NAME
             )
@@ -111,25 +111,88 @@ class DataTransformationConfig:
         self.data_transformation_dir = os.path.join(
             training_pipeline_config.artifact_dir, "data_transformation"
         )
-        # creating transformer folder
+        # creating transformer folder inside data transformation folder
         self.transform_object_path = os.path.join(
             self.data_transformation_dir, "transformer", TRANSFORMER_OBJECT_FILE_NAME
         )
-        # creating transformed folder to store train file
+        # creating transformed folder inside data transformation folder to store train file
         self.transform_train_path = os.path.join(
             self.data_transformation_dir,
             "transformed",
             TRAIN_FILE_NAME.replace("csv", "npz"),
         )
-        # creating transformed folder to store test file
+        # creating transformed folder inside data transformation folder to store test file
         self.transform_test_path = os.path.join(
             self.data_transformation_dir,
             "transformed",
             TEST_FILE_NAME.replace("csv", "npz"),
         )
-        # creating target encoder folder to store encoder file
+        # creating target encoder folder inside data transformation folder to store target encoder file
         self.target_encoder_path = os.path.join(
             self.data_transformation_dir,
             "target_encoder",
             TARGET_ENCODER_OBJECT_FILE_NAME,
+        )
+
+
+# creating ModelTrainingConfig class
+class ModelTrainingConfig:
+    """
+    Description: creating folder for storing model training data
+    """
+
+    # defining init function aka constructor
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        # creating model trainer folder
+        self.model_trainer_dir = os.path.join(
+            training_pipeline_config.artifact_dir, "model_trainer"
+        )
+        # creating model folder inside model trainer folder
+        self.model_path = os.path.join(self.model_trainer_dir, "model", MODEL_FILE_NAME)
+
+        # setting accuracy
+        self.expected_accuracy = 0.7
+
+        # setting threshold for overfitting
+        self.overfitting_threshold = 0.3
+
+
+# creating ModelEvaluationConfig class
+class ModelEvaluationConfig:
+    """
+    Desciption: creating folder for storing model evaluation data
+    """
+
+    # defining init function aka constructor
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        self.change_threshold = 0.01
+
+
+# creating ModelPusherConfig class
+class ModelPusherConfig:
+    """
+    Description: creating folder for storing model pusher data
+    """
+
+    # defining init function aka constructor
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        # creating a model pusher folder
+        self.model_pusher_dir = os.path.join(
+            training_pipeline_config.artifact_dir, "model_pusher"
+        )
+        # creating saved_model folder
+        self.saved_model_dir = os.path.join("saved_models")
+        # creating pusher_model folder
+        self.pusher_model_dir = os.path.join(self.model_pusher_dir, "saved_models")
+        # saving the model after pushing it
+        # see at the DataTransformationConfig section above
+        # saving the data after training it
+        self.pusher_model_path = os.path.join(self.pusher_model_dir, MODEL_FILE_NAME)
+        # saving the transformer data after pushing it
+        self.pusher_transformer_path = os.path.join(
+            self.pusher_model_dir, TRANSFORMER_OBJECT_FILE_NAME
+        )
+        # saving the target_encoder data after pushing it
+        self.pusher_target_encoder_path = os.path.join(
+            self.pusher_model_dir, TARGET_ENCODER_OBJECT_FILE_NAME
         )

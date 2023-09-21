@@ -14,7 +14,7 @@ from Insurance import utils
 # creating data validation class
 class DataValidation:
     """
-    Description:
+    Description: Validates the data for preprocessing
     """
 
     # defining constructor

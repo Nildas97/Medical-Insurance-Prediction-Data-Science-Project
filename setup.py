@@ -36,5 +36,3 @@ setup(
     packages=find_packages(),
     install_requires=get_requirements(),
 )
-
-# timstamp 27 min

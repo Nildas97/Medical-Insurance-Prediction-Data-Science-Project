@@ -15,6 +15,10 @@ from sklearn.model_selection import train_test_split
 
 # creating DataIngestion class
 class DataIngestion:
+    """
+    Description: Ingesting the data for further data processing
+    """
+
     # defining init function to call data_ingestion_config from config_entity file
     def __init__(self, data_ingestion_config: config_entity.DataIngestionConfig):
         try:

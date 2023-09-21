@@ -50,8 +50,13 @@ def get_collection_as_dataframe(
         raise InsuranceException(e, sys)
 
 
+# =======================================Data_Validation=======================================
 # defining write_yaml_file function
 def write_yaml_file(file_path, data: dict):
+    """
+    create: yaml file
+    data: dictionary
+    """
     try:
         # defining the directory
         file_dir = os.path.dirname(file_path)
@@ -66,6 +71,10 @@ def write_yaml_file(file_path, data: dict):
 
 
 def convert_column_float(df: pd.DataFrame, exclude_columns: list) -> pd.DataFrame:
+    """
+    convert: column data to float
+    return: dataframe
+    """
     try:
         for column in df.columns:
             if column not in exclude_columns:
@@ -76,7 +85,15 @@ def convert_column_float(df: pd.DataFrame, exclude_columns: list) -> pd.DataFram
         raise InsuranceException(e, sys)
 
 
+# =======================================Data_Transformation=======================================
+
+
 def save_object(file_path: str, obj: object) -> None:
+    """
+    Save: object
+    file_path: str location of file to save
+    return: None
+    """
     try:
         # creating the directory if exists ignore
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -88,6 +105,11 @@ def save_object(file_path: str, obj: object) -> None:
 
 
 def load_object(file_path: str) -> object:
+    """
+    load: object
+    file_path: str location of file to save
+    return: as object to save
+    """
     try:
         # checking if the file not available
         if not os.path.exists(file_path):
@@ -100,6 +122,11 @@ def load_object(file_path: str) -> object:
 
 
 def save_numpy_array_data(file_path: str, array: np.array):
+    """
+    Save numpy array data to file
+    file_path: str location of file to save
+    return: np.array data to save
+    """
     try:
         # defining the directory
         dir_path = os.path.dirname(file_path)
@@ -112,13 +139,18 @@ def save_numpy_array_data(file_path: str, array: np.array):
         raise InsuranceException(e, sys)
 
 
-# # model trainer for loading the data
-# def load_numpy_array_data(file_path: str) -> np.array:
-#     try:
-#         # opening the file as object in rb mode and return file_object
-#         # now we wil go to the model_trainer file
-#         with open(file_path, "rb") as file_obj:
-#             return np.load(file_obj)
-
-#     except Exception as e:
-#         raise InsuranceException(e, sys)
+# =======================================Model_Training=======================================
+# model trainer for loading the data
+def load_numpy_array_data(file_path: str) -> np.array:
+    """
+    load numpy array data from file
+    file_path: str location of file to load
+    return: np.array data loaded
+    """
+    try:
+        # opening the file as object in rb mode and return file_object
+        # now we wil go to the model_trainer file
+        with open(file_path, "rb") as file_obj:
+            return np.load(file_obj)
+    except Exception as e:
+        raise InsuranceException(e, sys)

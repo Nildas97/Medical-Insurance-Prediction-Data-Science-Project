@@ -8,34 +8,14 @@ from Insurance.entity import config_entity
 from Insurance.components.data_ingestion import DataIngestion
 from Insurance.components.data_validation import DataValidation
 from Insurance.components.data_transformation import DataTransformation
-
-# defining the test_logger_and_exception function
-# def test_logger_and_exception():
-#     """
-#     Description:
-#         Returns test files of logging and exception
-
-#     Raises:
-#         InsuranceException: handling exception
-#     """
-#     try:
-#         logging.debug("Starting point of the test_logger_and_exception")
-#         result = 3 / 0
-#         print(result)
-#         logging.debug("Ending point of the test_logger_and_exception")
-#     except Exception as e:
-#         logging.debug(str(e))
-#         raise InsuranceException(e, sys)
+from Insurance.components.model_trainer import ModelTrainer
+from Insurance.components.model_evaluation import ModelEvaluation
+from Insurance.components.model_pusher import ModelPusher
 
 
 # calling name function
 if __name__ == "__main__":
     try:
-        # test_logger_and_exception()
-        # get_collection_as_dataframe(
-        #     database_name="INSURANCE", collection_name="INSURANCE_PROJECT"
-        # )
-
         # TRAINING_PIPELINE_CONFIG
         training_pipeline_config = config_entity.TrainingPipelineConfig()
 
@@ -59,7 +39,8 @@ if __name__ == "__main__":
             training_pipeline_config=training_pipeline_config
         )
         # now defining data_validation class
-        # it is coming from data_validation_config, data is from data_ingestion_artifact
+        # it is coming from data_validation_config,
+        # data is from data_ingestion_artifact
         data_validation = DataValidation(
             data_validation_config=data_validation_config,
             data_ingestion_artifact=data_ingestion_artifact,
@@ -73,7 +54,8 @@ if __name__ == "__main__":
             training_pipeline_config=training_pipeline_config
         )
         # now defining data_transformation class
-        # it is coming from data_transformation_config, data is from data_Transformation_artifact
+        # it is coming from data_transformation_config,
+        # data is from data_ingestion_artifact
         data_transformation = DataTransformation(
             data_transformation_config=data_transformation_config,
             data_ingestion_artifact=data_ingestion_artifact,
@@ -82,5 +64,56 @@ if __name__ == "__main__":
         data_transformation_artifact = (
             data_transformation.initiate_data_transformation()
         )
+
+        # MODEL TRAINER
+        # first we will call model_trainer_config file
+        model_trainer_config = config_entity.ModelTrainingConfig(
+            training_pipeline_config=training_pipeline_config
+        )
+        # now defining model_trainer class
+        # it is coming from model_trainer_config,
+        # data is from data_transformation_artifact
+        model_trainer = ModelTrainer(
+            model_trainer_config=model_trainer_config,
+            data_transformation_artifact=data_transformation_artifact,
+        )
+        # initiating model_trainer_artifact
+        model_trainer_artifact = model_trainer.initiate_model_trainer()
+
+        # MODEL EVALUATION
+        # first we will call model_evaluation_config file
+        model_evaluation_config = config_entity.ModelEvaluationConfig(
+            training_pipeline_config=training_pipeline_config
+        )
+        # now defining model_evaluation class
+        # it is coming from model_evaluation_config,
+        # data is from data_ingestion_artifact,
+        # data_transformation_artifact and model_trainer_artifact
+        model_evaluation = ModelEvaluation(
+            model_evaluation_config=model_evaluation_config,
+            data_ingestion_artifact=data_ingestion_artifact,
+            data_transformation_artifact=data_transformation_artifact,
+            model_trainer_artifact=model_trainer_artifact,
+        )
+        # initiating model_evaluation_artifact
+        model_evaluation_artifact = model_evaluation.initiate_model_evaluation()
+
+        # MODEL PUSHER
+        # first we will call model_pusher_config file
+        model_pusher_config = config_entity.ModelPusherConfig(
+            training_pipeline_config=training_pipeline_config
+        )
+        # now defining model_pusher class
+        # it is coming from model_pusher_config,
+        # data is from data_transformation_artifact,
+        # and model_trainer_artifact
+        model_pusher = ModelPusher(
+            model_pusher_config=model_pusher_config,
+            data_transformation_artifact=data_transformation_artifact,
+            model_trainer_artifact=model_trainer_artifact,
+        )
+        # initiating model_pusher_artifact
+        model_pusher_artifact = model_pusher.initiate_model_pusher()
+
     except Exception as e:
         print(e)
